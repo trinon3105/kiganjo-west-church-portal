@@ -14,6 +14,69 @@ export type Database = {
   }
   public: {
     Tables: {
+      ministry_events: {
+        Row: {
+          created_at: string
+          description: string | null
+          event_date: string
+          id: string
+          location: string | null
+          ministry: Database["public"]["Enums"]["ministry_type"]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          event_date: string
+          id?: string
+          location?: string | null
+          ministry: Database["public"]["Enums"]["ministry_type"]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          event_date?: string
+          id?: string
+          location?: string | null
+          ministry?: Database["public"]["Enums"]["ministry_type"]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      ministry_registrations: {
+        Row: {
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          ministry: Database["public"]["Enums"]["ministry_type"]
+          phone: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          ministry: Database["public"]["Enums"]["ministry_type"]
+          phone?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          ministry?: Database["public"]["Enums"]["ministry_type"]
+          phone?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -55,7 +118,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      ministry_type: "youth" | "worship" | "men" | "women"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -182,6 +245,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      ministry_type: ["youth", "worship", "men", "women"],
+    },
   },
 } as const
